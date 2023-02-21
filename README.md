@@ -22,7 +22,7 @@ TBD
 
 ## Key Features
 ### Feature 1: Filter events by city
-User story: As a user, I would like to be able to filter events by city so that I can see the events that take place in that city.
+**User story:** As a user, I would like to be able to filter events by city so that I can see the events that take place in that city.
 #### Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
 #### Scenario 2: User should see a list of suggestions when they search for a city.
 #### Scenario 3: User can select a city from the suggested list.
