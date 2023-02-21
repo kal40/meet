@@ -2,11 +2,11 @@
 
 ## Description
 
-This is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
+This is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming full-stack meetup events.
 
 The main purpose of this app is to present how I create a PWA application.
 
-This site was built using [Netlify Build](https://www.netlify.com/products/build/).
+This site was built using [GitHub Pages](https://pages.github.com/).
 
 [LIVE DEMO (under progress ...)](https://meet.smartcoder.dev/)
 
@@ -21,7 +21,7 @@ TBD
 TBD
 
 ## Key Features
-### Feature 1: Filter events by city.
+### Feature 1: Filter events by city
 User story: As a user, I would like to be able to filter events by city so that I can see the events that take place in that city.
 #### Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
 #### Scenario 2: User should see a list of suggestions when they search for a city.
