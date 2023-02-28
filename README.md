@@ -10,6 +10,9 @@ This site was built using [GitHub Pages](https://pages.github.com/).
 
 [LIVE DEMO (under progress ...)](https://meet.smartcoder.dev/)
 
+### Serverless functions
+The application uses serverless functions (AWS lambda) for the authorization server instead of using a traditional server.
+
 ## Getting started
 
 ### Prerequisites
