@@ -13,7 +13,7 @@ class Event extends Component {
     const { collapsed } = this.state;
 
     return (
-      <div className="Event">
+      <div className="event">
         <h2 className="summary">{event.summary}</h2>
         <p className="start">{event.start.dateTime}</p>
         <p className="location">{`Location: ${event.location}`}</p>
@@ -24,7 +24,7 @@ class Event extends Component {
           <div className="details">
             <h3 className="about">About this event:</h3>
             <a
-              className="link"
+              className="link details-btn"
               href={event.htmlLink}
               target="_blank"
               rel="noopener noreferrer"
