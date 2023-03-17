@@ -5,6 +5,7 @@ import EventList from "../EventList";
 import CitySearch from "../CitySearch";
 import { mockData } from "../mock-data";
 import { extractLocations, getEvents } from "../api";
+import NumberOfEvents from "../NumberOfEvents";
 
 describe("<App /> component", () => {
   let AppWrapper;
@@ -61,8 +62,28 @@ describe("<App /> integration", () => {
     const AppWrapper = mount(<App />);
     const suggestionItems = AppWrapper.find(CitySearch).find(".suggestions li");
     await suggestionItems.at(suggestionItems.length - 1).simulate("click");
-    const allEvents = await getEvents();
-    expect(AppWrapper.state("events")).toEqual(allEvents);
+    expect(AppWrapper.state("events")).toHaveLength(32);
+    AppWrapper.unmount();
+  });
+
+  test("NumberOfEvents input is changed and the value is reflected correctly", async () => {
+    const AppWrapper = mount(<App />);
+    const numberOfEvents = AppWrapper.find(NumberOfEvents).find("input");
+    await numberOfEvents.simulate("change", {
+      target: { value: 15 },
+    });
+    expect(AppWrapper.state("numberOfEvents")).toEqual(15);
+    AppWrapper.unmount();
+  });
+
+  test("NumberOfEvents input value is reflected correctly in the event list", async () => {
+    const AppWrapper = mount(<App />);
+    await getEvents();
+    const numberOfEventsInput = AppWrapper.find(NumberOfEvents).find("input");
+    await numberOfEventsInput.simulate("change", {
+      target: { value: 15 },
+    });
+    expect(AppWrapper.state("events")).toHaveLength(15);
     AppWrapper.unmount();
   });
 });

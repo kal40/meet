@@ -14,7 +14,7 @@ class CitySearch extends Component {
     this.setState({
       query: value,
       suggestions,
-      showSuggestions: undefined,
+      showSuggestions: true,
     });
   };
 
@@ -24,7 +24,7 @@ class CitySearch extends Component {
       showSuggestions: false,
     });
 
-    this.props.updateEvents(suggestion);
+    this.props.updateEvents(suggestion, undefined);
   };
 
   render() {
@@ -38,6 +38,11 @@ class CitySearch extends Component {
           onFocus={() => {
             this.setState({ showSuggestions: true });
           }}
+          onBlur={() =>
+            setTimeout(() => {
+              this.setState({ showSuggestions: false });
+            }, 200)
+          }
         />
         <ul
           className="suggestions"

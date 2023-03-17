@@ -5,10 +5,10 @@ import NumberOfEvents from "../NumberOfEvents";
 describe("<NumberOfEvents />", () => {
   let NumberOfEventsWrapper, numberOfEventsInput;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
-    numberOfEventsInput = NumberOfEventsWrapper.find(
-      "input.numberOfEvents-input"
+    NumberOfEventsWrapper = shallow(
+      <NumberOfEvents numberOfEvents={32} updateNumberOfEvents={() => {}} />
     );
+    numberOfEventsInput = NumberOfEventsWrapper.find(".number-of-events");
   });
 
   test("<NumberOfEvents /> and numberOfEvents-input are both rendered", () => {
@@ -16,21 +16,8 @@ describe("<NumberOfEvents />", () => {
     expect(numberOfEventsInput).toBeDefined();
   });
 
-  test("numberOfEvents-input is 10 (number type) by default", () => {
-    expect(
-      NumberOfEventsWrapper.find("input.numberOfEvents-input").prop("type")
-    ).toBe("number");
-    expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(10);
-  });
-
-  test("numberOfEvents-input is changed and the value is reflected correctly", () => {
-    expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(10);
-    NumberOfEventsWrapper.find("input.numberOfEvents-input").simulate(
-      "change",
-      {
-        target: { value: 15 },
-      }
-    );
-    expect(NumberOfEventsWrapper.state("numberOfEvents")).toBe(15);
+  test("numberOfEvents-input is 32 (number type) by default", () => {
+    expect(NumberOfEventsWrapper.find("input").prop("type")).toBe("number");
+    expect(NumberOfEventsWrapper.find("input").prop("value")).toEqual(32);
   });
 });
