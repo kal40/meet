@@ -35,8 +35,8 @@ describe("<Event /> component", () => {
     expect(eventLocation.text()).toBe(`Location: ${locationString}`);
   });
 
-  test('<Event /> details is initially collapsed, children hidden, details-button text is "show details"', () => {
-    const detailsButton = EventWrapper.find("button.details-button");
+  test('<Event /> details is initially collapsed, children hidden, details-btn text is "show details"', () => {
+    const detailsButton = EventWrapper.find("button.details-btn");
     expect(EventWrapper.state("collapsed")).toBe(true);
     expect(detailsButton).toBeDefined();
     expect(detailsButton.text()).toBe("show details");
@@ -46,7 +46,7 @@ describe("<Event /> component", () => {
   });
 
   test("<Event /> details is expanded (collapsed=false) on click", () => {
-    const detailsButton = EventWrapper.find("button.details-button");
+    const detailsButton = EventWrapper.find("button.details-btn");
     detailsButton.simulate("click");
     expect(EventWrapper.find("h3.about")).toHaveLength(1);
     expect(EventWrapper.find("a.link")).toHaveLength(1);

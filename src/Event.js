@@ -17,14 +17,14 @@ class Event extends Component {
         <h2 className="summary">{event.summary}</h2>
         <p className="start">{event.start.dateTime}</p>
         <p className="location">{`Location: ${event.location}`}</p>
-        <button className="details-button" onClick={this.toggleDetails}>
+        <button className="details-btn" onClick={this.toggleDetails}>
           {collapsed ? "show" : "hide"} details
         </button>
         {!collapsed && (
-          <div className="details">
+          <div className="event__Details">
             <h3 className="about">About this event:</h3>
             <a
-              className="link details-btn"
+              className="link"
               href={event.htmlLink}
               target="_blank"
               rel="noopener noreferrer"
