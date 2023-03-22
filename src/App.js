@@ -5,6 +5,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { extractLocations, getEvents } from "./api";
+import { WarningAlert } from "./Alert";
 
 class App extends Component {
   state = {
@@ -12,10 +13,21 @@ class App extends Component {
     locations: [],
     selectedLocation: "all",
     numberOfEvents: 32,
+    offlineText: "",
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
+    if (!navigator.onLine) {
+      this.setState({
+        offlineText:
+          "The network is offline, the displayed list has been loaded from the cache.",
+      });
+    } else {
+      this.setState({
+        offlineText: "",
+      });
+    }
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events, locations: extractLocations(events) });
@@ -31,6 +43,16 @@ class App extends Component {
     location = this.state.selectedLocation,
     eventCount = this.state.numberOfEvents
   ) => {
+    if (!navigator.onLine) {
+      this.setState({
+        offlineText:
+          "The network is offline, the displayed list has been loaded from the cache.",
+      });
+    } else {
+      this.setState({
+        offlineText: "",
+      });
+    }
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
@@ -50,6 +72,7 @@ class App extends Component {
           locations={this.state.locations}
           updateEvents={this.updateEvents}
         />
+        <WarningAlert text={this.state.offlineText} />
         <NumberOfEvents
           numberOfEvents={this.state.numberOfEvents}
           updateEvents={this.updateEvents}
