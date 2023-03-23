@@ -21,7 +21,12 @@ class App extends Component {
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem("access_token");
-    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    let isTokenValid;
+    if (accessToken && !navigator.onLine) {
+      isTokenValid = true;
+    } else {
+      isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    }
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
@@ -33,16 +38,22 @@ class App extends Component {
       });
     }
 
-    if (!navigator.onLine) {
-      this.setState({
-        offlineText:
-          "The network is offline, the displayed list has been loaded from the cache.",
-      });
-    } else {
-      this.setState({
-        offlineText: "",
-      });
-    }
+    const handleNetworkStateChange = () => {
+      if (!navigator.onLine) {
+        this.setState({
+          offlineText:
+            "The network is offline. During initial load or refresh the displayed list is loaded from the cache.",
+        });
+      } else {
+        this.setState({
+          offlineText: "",
+        });
+      }
+    };
+
+    handleNetworkStateChange();
+    window.addEventListener("offline", handleNetworkStateChange);
+    window.addEventListener("online", handleNetworkStateChange);
   }
 
   componentWillUnmount() {
@@ -53,16 +64,6 @@ class App extends Component {
     location = this.state.selectedLocation,
     eventCount = this.state.numberOfEvents
   ) => {
-    if (!navigator.onLine) {
-      this.setState({
-        offlineText:
-          "The network is offline, the displayed list has been loaded from the cache.",
-      });
-    } else {
-      this.setState({
-        offlineText: "",
-      });
-    }
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
@@ -80,6 +81,7 @@ class App extends Component {
       return <div className="App" />;
     return (
       <div className="App">
+        <h1>Welcome to Meet App</h1>
         <WarningAlert text={this.state.offlineText} />
         <CitySearch
           locations={this.state.locations}
