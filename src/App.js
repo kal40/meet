@@ -113,7 +113,7 @@ class App extends Component {
           <Col md={9} className="mb-5 d-flex flex-column align-items-center">
             <h1 className="mb-5">Welcome to Meet App</h1>
             <div
-              className="position-fixed start-50 translate-middle-x"
+              className="position-absolute start-50 translate-middle-x"
               style={{ top: "93px" }}
             >
               <WarningAlert text={this.state.offlineText} />
