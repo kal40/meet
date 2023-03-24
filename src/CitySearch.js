@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Form from "react-bootstrap/Form";
 import { InfoAlert } from "./Alert";
 
 class CitySearch extends Component {
@@ -44,21 +45,32 @@ class CitySearch extends Component {
   render() {
     return (
       <div className="CitySearch">
-        <InfoAlert text={this.state.infoText} />
-        <input
-          type="text"
-          className="city"
-          value={this.state.query}
-          onChange={this.handleInputChanged}
-          onFocus={() => {
-            this.setState({ showSuggestions: true });
-          }}
-          onBlur={() =>
-            setTimeout(() => {
-              this.setState({ showSuggestions: false });
-            }, 200)
-          }
-        />
+        <div
+          className="position-fixed start-50 translate-middle-x"
+          style={{ top: "167px" }}
+        >
+          <InfoAlert text={this.state.infoText} />
+        </div>
+        <Form.Group
+          controlId="citySearch"
+          className="mb-4"
+          style={{ width: "14rem" }}
+        >
+          <Form.Control
+            type="text"
+            className="city"
+            value={this.state.query}
+            onChange={this.handleInputChanged}
+            onFocus={() => {
+              this.setState({ showSuggestions: true });
+            }}
+            onBlur={() =>
+              setTimeout(() => {
+                this.setState({ showSuggestions: false });
+              }, 200)
+            }
+          />
+        </Form.Group>
         <ul
           className="suggestions"
           style={this.state.showSuggestions ? {} : { display: "none" }}
