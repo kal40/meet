@@ -28,7 +28,7 @@ class NumberOfEvents extends Component {
         <h4 className="mb-4">Number of Events:</h4>
         <div
           className="position-absolute start-50 translate-middle-x"
-          style={{ top: "286px" }}
+          style={{ top: "10px" }}
         >
           <ErrorAlert text={this.state.errorText} />
         </div>

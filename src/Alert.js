@@ -14,7 +14,7 @@ class Alert extends Component {
 
   render() {
     return (
-      <div className="Alert">
+      <div className="Alert badge text-wrap">
         <p style={this.getStyle()}>{this.props.text}</p>
       </div>
     );

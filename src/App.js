@@ -111,10 +111,10 @@ class App extends Component {
       <div className="App">
         <Row className="justify-content-center py-5">
           <Col md={9} className="mb-5 d-flex flex-column align-items-center">
-            <h1 className="mb-5">Welcome to Meet App</h1>
+            <h1 className="mb-4">Welcome to Meet App</h1>
             <div
               className="position-absolute start-50 translate-middle-x"
-              style={{ top: "93px" }}
+              style={{ top: "10px" }}
             >
               <WarningAlert text={this.state.offlineText} />
             </div>
@@ -130,7 +130,7 @@ class App extends Component {
           </Col>
         </Row>
         <Row className=" py-5 text-center">
-          <h3 className="mb-5">Events in each city</h3>
+          <h3 className="mb-4">Events in each city</h3>
           <Col>
             <EventGenre events={this.state.events} />
           </Col>
@@ -161,7 +161,7 @@ class App extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col>
+          <Col xs={10} md={8}>
             <EventList events={this.state.events} />
           </Col>
         </Row>

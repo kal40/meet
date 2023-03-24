@@ -15,10 +15,7 @@ class Event extends Component {
     const { collapsed } = this.state;
 
     return (
-      <Card
-        style={{ width: "60rem" }}
-        className="my-3 mx-auto shadow-sm p-3 rounded-2 text-ligth"
-      >
+      <Card className="my-3 mx-auto shadow-sm p-3 rounded-2 text-ligth">
         <Card.Body>
           <Card.Title>{event.summary}</Card.Title>
           <Card.Text>

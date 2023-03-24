@@ -47,7 +47,7 @@ class CitySearch extends Component {
       <div className="CitySearch">
         <div
           className="position-absolute start-50 translate-middle-x"
-          style={{ top: "167px" }}
+          style={{ top: "10px" }}
         >
           <InfoAlert text={this.state.infoText} />
         </div>
