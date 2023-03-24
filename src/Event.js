@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 class Event extends Component {
   state = { collapsed: true };
@@ -13,28 +15,35 @@ class Event extends Component {
     const { collapsed } = this.state;
 
     return (
-      <div className="event">
-        <h2 className="summary">{event.summary}</h2>
-        <p className="start">{event.start.dateTime}</p>
-        <p className="location">{`Location: ${event.location}`}</p>
-        <button className="details-btn" onClick={this.toggleDetails}>
-          {collapsed ? "show" : "hide"} details
-        </button>
-        {!collapsed && (
-          <div className="event__Details">
-            <h3 className="about">About this event:</h3>
-            <a
-              className="link"
-              href={event.htmlLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              See details on Google Calendar
-            </a>
-            <p className="description">{event.description}</p>
-          </div>
-        )}
-      </div>
+      <Card
+        style={{ width: "60rem" }}
+        className="my-3 mx-auto shadow-sm p-3 rounded-2 text-ligth"
+      >
+        <Card.Body>
+          <Card.Title>{event.summary}</Card.Title>
+          <Card.Text>
+            <p className="start">{event.start.dateTime}</p>
+            <p className="location">{`Location: ${event.location}`}</p>
+            {!collapsed && (
+              <div className="event__Details">
+                <h3 className="about">About this event:</h3>
+                <a
+                  className="link"
+                  href={event.htmlLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  See details on Google Calendar
+                </a>
+                <p className="description">{event.description}</p>
+              </div>
+            )}
+          </Card.Text>
+          <Button variant="primary text-light" onClick={this.toggleDetails}>
+            {collapsed ? "Show" : "Hide"} Details
+          </Button>
+        </Card.Body>
+      </Card>
     );
   }
 }

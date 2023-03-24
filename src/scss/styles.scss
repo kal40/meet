@@ -1,0 +1,42 @@
+@import "./custom-bs";
+@import "~bootstrap/scss/bootstrap";
+
+.Alert {
+  text-align: center;
+}
+
+.suggestions {
+  width: 14rem;
+  position: absolute;
+  z-index: 2;
+  align-self: center;
+  margin: 0 auto;
+  top: 240px;
+  font-size: 14px;
+  box-shadow: 10px 10px 16px -12px rgba(207, 205, 205, 0.75);
+}
+
+.suggestions > li {
+  color: $dark;
+  text-align: left;
+  padding: 8px 6px 8px 10px;
+  background-color: #eee;
+  cursor: default;
+}
+
+.suggestions > li:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.suggestions > li:hover {
+  background-color: #bcdcdb;
+}
+
+.WelcomeScreen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: $dark;
+}

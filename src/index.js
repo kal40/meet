@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import Container from "react-bootstrap/Container";
+import "./scss/styles.scss";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
@@ -9,7 +10,9 @@ atatus.config("d3d5e374e86f4e70ab746db3f13f2578").install();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Container fluid className="min-vh-100 text-bg-dark">
+      <App />
+    </Container>
   </React.StrictMode>,
   document.getElementById("root")
 );
