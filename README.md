@@ -8,6 +8,17 @@ This site was built using [GitHub Pages](https://pages.github.com/).
 
 [LIVE DEMO](https://meet.smartcoder.dev/)
 
+## Key Technologies
+
+- Serverless functions (AWS lambda) for the authorization server instead of using a traditional server.
+- Oauth2 login with Google account
+- TDD Unit and Integration tests written with Jest
+- BDD style User Acceptance tests written with Jest-Cucumber
+- End to End tests written with Puppeteer
+- Data visualization with Recharts
+- Progressive Web Application
+- Bootstrap as a UI library for styling and responsiveness
+
 ## Getting started
 
 ### Prerequisites
@@ -29,17 +40,6 @@ then run the next commands:
 npm install
 npm run start
 ```
-
-## Key Technologies
-
-- Serverless functions (AWS lambda) for the authorization server instead of using a traditional server.
-- Oauth2 login with Google account
-- TDD Unit and Integration tests written with Jest
-- BDD style User Acceptance tests written with Jest-Cucumber
-- End to End tests written with Puppeteer
-- Data visualization with Recharts
-- Progressive Web Application
-- Bootstrap as a UI library for styling and responsiveness
 
 ## Application features
 
